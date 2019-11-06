@@ -248,7 +248,9 @@ const language_colors = {
     "PowerShell": "#012456"
 };
 const repos_list_html =
-    `<ol style="display: flex; flex-wrap: wrap; list-style-type: none; margin-bottom: 24px; margin-left: -8px; margin-right: -8px;">
+    `<ol style="display: flex; flex-wrap: wrap; list-style-type: none; margin-bottom: 24px; margin-left: -8px; margin-right: -8px;
+    padding-left: 0;
+    margin-top: 0;">
     {repos_html}
 </ol>`;
 const repos_html =
