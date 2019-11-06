@@ -308,7 +308,7 @@ function httpGet(url, response) {
 
 const lists = document.getElementsByClassName("github-pinned-repos");
 for (const list of lists) {
-    const reposNames = list.getAttribute("data-repos").split(";");
+    const reposNames = list.getAttribute("data-repos").split(";").map(name => name.trim());
     const reposList = reposNames.map(name => { return { name: name, html: "" } });
     for (const repos of reposList) {
         httpGet("https://api.github.com/repos/" + repos.name, reposJson => {
