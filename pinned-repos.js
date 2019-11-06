@@ -247,11 +247,11 @@ const language_colors = {
     "Dogescript": "#cca760",
     "PowerShell": "#012456"
 };
-const list_template =
+const repos_list_html =
     `<ol style="display: flex; flex-wrap: wrap; list-style-type: none; margin-bottom: 24px; margin-left: -8px; margin-right: -8px;">
-    {repos}
+    {repos_html}
 </ol>`;
-const repos_template =
+const repos_html =
     `<li style="align-content: stretch; display: flex; margin-bottom: 16px; padding-left: 8px; padding-right: 8px; width: 50%;">
     <div style="background-color: rgb(255, 255, 255); border-color: rgb(209, 213, 218); border-radius: 3px; border-style: solid; border-width: 1px; display: flex; padding: 16px; width: 100%;">
         <div style="display: flex; flex-direction: column; width: 100%;">
@@ -265,22 +265,33 @@ const repos_template =
                 {description}
             </p>
             <p style="border-color: rgb(88, 96, 105); caret-color: rgb(88, 96, 105); color: rgb(88, 96, 105); font-size: 12px; margin-bottom: 0px;">
-                <span style="display: inline-block; margin-right: 16px;">
-                    <span style="background-color: {language_color}; border-radius: 50%; display: inline-block; height: 12px; position: relative; top: 1px; width: 12px;"></span>
-                    <span itemprop="programmingLanguage">{language}</span>
-                </span>
-                <a href="https://github.com/{full_name}/stargazers" style="border-color: rgb(88, 96, 105); color: rgb(88, 96, 105); display: inline-block;">
-                    <svg aria-label="stars" viewBox="0 0 14 16" version="1.1" width="14" height="16" role="img" style="display: inline-block; fill: rgb(88, 96, 105); vertical-align: text-bottom;"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"></path></svg>
-                    {stargazers_count}
-                </a>
-                <a href="https://github.com/{full_name}/network/members" style="border-color: rgb(88, 96, 105); color: rgb(88, 96, 105); display: inline-block; margin-left: 16px;">
-                    <svg aria-label="forks" viewBox="0 0 10 16" version="1.1" width="10" height="16" role="img" style="display: inline-block; fill: rgb(88, 96, 105); vertical-align: text-bottom;"><path fill-rule="evenodd" d="M8 1a1.993 1.993 0 00-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 002 1a1.993 1.993 0 00-1 3.72V6.5l3 3v1.78A1.993 1.993 0 005 15a1.993 1.993 0 001-3.72V9.5l3-3V4.72A1.993 1.993 0 008 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
-                    {network_count}
-                </a>
+                {language_html}
+                {stargazers_html}
+                {network_html}
             </p>
         </div>
     </div>
 </li>`
+const repos_language_html =
+    `<span style="display: inline-block; margin-right: 16px;">
+    <span style="background-color: {language_color}; border-radius: 50%; display: inline-block; height: 12px; position: relative; top: 1px; width: 12px;"></span>
+    <span itemprop="programmingLanguage">{language}</span>
+</span>`
+const repos_stargazers_html =
+    `<a href="https://github.com/{full_name}/stargazers" style="border-color: rgb(88, 96, 105); color: rgb(88, 96, 105); display: inline-block;">
+    <svg aria-label="stars" viewBox="0 0 14 16" version="1.1" width="14" height="16" role="img" style="display: inline-block; fill: rgb(88, 96, 105); vertical-align: text-bottom;"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"></path></svg>
+    {stargazers_count}
+</a>`
+const repos_network_html =
+    `<a href="https://github.com/{full_name}/network/members" style="border-color: rgb(88, 96, 105); color: rgb(88, 96, 105); display: inline-block; margin-left: 16px;">
+    <svg aria-label="forks" viewBox="0 0 10 16" version="1.1" width="10" height="16" role="img" style="display: inline-block; fill: rgb(88, 96, 105); vertical-align: text-bottom;"><path fill-rule="evenodd" d="M8 1a1.993 1.993 0 00-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 002 1a1.993 1.993 0 00-1 3.72V6.5l3 3v1.78A1.993 1.993 0 005 15a1.993 1.993 0 001-3.72V9.5l3-3V4.72A1.993 1.993 0 008 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+    {network_count}
+</a>`
+const repos_network_html_no_star =
+    `<a href="https://github.com/{full_name}/network/members" style="border-color: rgb(88, 96, 105); color: rgb(88, 96, 105); display: inline-block;">
+    <svg aria-label="fork" viewBox="0 0 10 16" version="1.1" width="10" height="16" role="img" style="display: inline-block; fill: rgb(88, 96, 105); vertical-align: text-bottom;"><path fill-rule="evenodd" d="M8 1a1.993 1.993 0 00-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 002 1a1.993 1.993 0 00-1 3.72V6.5l3 3v1.78A1.993 1.993 0 005 15a1.993 1.993 0 001-3.72V9.5l3-3V4.72A1.993 1.993 0 008 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+    {network_count}
+</a>`
 
 function httpGet(url, response) {
     var xhr = new XMLHttpRequest();
@@ -293,7 +304,6 @@ function httpGet(url, response) {
     xhr.send(null);
 }
 
-
 const lists = document.getElementsByClassName("github-pinned-repos");
 for (const list of lists) {
     const reposNames = list.getAttribute("data-repos").split(";");
@@ -302,13 +312,16 @@ for (const list of lists) {
         httpGet("https://api.github.com/repos/" + repos.name, reposJson => {
             reposJson = JSON.parse(reposJson);
             reposJson.language_color = language_colors[reposJson.language];
-            let html = repos_template;
+            let html = repos_html;
+            html = html.replace("{language_html}", reposJson.language ? repos_language_html : "");
+            html = html.replace("{stargazers_html}", reposJson.stargazers_count ? repos_stargazers_html : "");
+            html = html.replace("{network_html}", reposJson.network_count ? (reposJson.stargazers_count ? repos_network_html : repos_network_html_no_star) : "");
             for (const key in reposJson) {
                 html = html.replace(new RegExp(`{${key}}`, "g"), reposJson[key] ? reposJson[key] : "")
             }
             repos.html = html;
 
-            list.innerHTML = list_template.replace("{repos}", reposList.map(repos => repos.html).join("\n"));
+            list.innerHTML = repos_list_html.replace("{repos_html}", reposList.map(repos => repos.html).join("\n"));
         });
     }
 }
