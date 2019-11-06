@@ -248,13 +248,11 @@ const language_colors = {
     "PowerShell": "#012456"
 };
 const repos_list_html =
-    `<ol style="display: flex; flex-wrap: wrap; list-style-type: none; margin-bottom: 24px; margin-left: -8px; margin-right: -8px;
-    padding-left: 0;
-    margin-top: 0;">
+    `<ol style="display: flex; flex-wrap: wrap; list-style-type: none; margin-bottom: 0; margin-left: -8px; margin-right: -8px; padding-left: 0; margin-top: 0;">
     {repos_html}
 </ol>`;
 const repos_html =
-    `<li style="align-content: stretch; display: flex; margin-bottom: 16px; padding-left: 8px; padding-right: 8px; width: 50%;">
+    `<li style="align-content: stretch; display: flex; margin-bottom: 16px; padding-left: 8px; padding-right: 8px; width: calc(100%/{column_count});">
     <div style="background-color: rgb(255, 255, 255); border-color: rgb(209, 213, 218); border-radius: 3px; border-style: solid; border-width: 1px; display: flex; padding: 16px; width: 100%;">
         <div style="display: flex; flex-direction: column; width: 100%;">
             <div style="align-items: center; display: flex; position: relative; width: 100%;">
@@ -309,18 +307,24 @@ function httpGet(url, response) {
 const lists = document.getElementsByClassName("github-pinned-repos");
 for (const list of lists) {
     const reposNames = list.getAttribute("data-repos").split(";").map(name => name.trim());
+    const columnCount = list.getAttribute("data-column-count");
     const reposList = reposNames.map(name => { return { name: name, html: "" } });
     for (const repos of reposList) {
         httpGet("https://api.github.com/repos/" + repos.name, reposJson => {
-            reposJson = JSON.parse(reposJson);
-            reposJson.language_color = language_colors[reposJson.language];
+
+            const data = JSON.parse(reposJson);
+            data.language_color = language_colors[data.language];
+            data.column_count = columnCount ? columnCount : 1;
+
             let html = repos_html;
-            html = html.replace("{language_html}", reposJson.language ? repos_language_html : "");
-            html = html.replace("{stargazers_html}", reposJson.stargazers_count ? repos_stargazers_html : "");
-            html = html.replace("{network_html}", reposJson.network_count ? (reposJson.stargazers_count ? repos_network_html : repos_network_html_no_star) : "");
-            for (const key in reposJson) {
-                html = html.replace(new RegExp(`{${key}}`, "g"), reposJson[key] ? reposJson[key] : "")
+            html = html.replace("{language_html}", data.language ? repos_language_html : "");
+            html = html.replace("{stargazers_html}", data.stargazers_count ? repos_stargazers_html : "");
+            html = html.replace("{network_html}", data.network_count ? (data.stargazers_count ? repos_network_html : repos_network_html_no_star) : "");
+
+            for (const key in data) {
+                html = html.replace(new RegExp(`{${key}}`, "g"), data[key] ? data[key] : "")
             }
+
             repos.html = html;
 
             list.innerHTML = repos_list_html.replace("{repos_html}", reposList.map(repos => repos.html).join("\n"));
