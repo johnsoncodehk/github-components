@@ -110,13 +110,9 @@ for (const div of divs) {
                 repo.html = repo.html.replace(new RegExp(`{${key}}`, "g"), data[key] ? data[key] : "")
             }
 
-            updateDiv();
+            let html = style + repos_list_html.replace("{repos_html}", repos.map(repos => repos.html).join(""));
+            html = html.replace(new RegExp("{div_id}", "g"), id);
+            div.innerHTML = html;
         });
-    }
-
-    function updateDiv() {
-        let html = style + repos_list_html.replace("{repos_html}", repos.map(repos => repos.html).join(""));
-        html = html.replace(new RegExp("{div_id}", "g"), id);
-        div.innerHTML = html;
     }
 }
