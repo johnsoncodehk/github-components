@@ -82,24 +82,24 @@ const user_card_html = `
         font-weight: 600 !important;
     }
 
-    .github-user-card .text-gray-dark {
-        color: #24292e;
+    .github-user-card .text-gray-dark:not(:hover) {
+        color: #24292e !important;
     }
 
-    .github-user-card .text-gray {
-        color: #586069;
+    .github-user-card .text-gray:not(:hover) {
+        color: #586069 !important;
     }
 
-    .github-user-card .link-gray-dark {
-        color: #24292e;
+    .github-user-card .link-gray-dark:not(:hover) {
+        color: #24292e !important;
     }
 
-    .github-user-card .link-gray {
-        color: #586069;
+    .github-user-card .link-gray:not(:hover) {
+        color: #586069 !important;
     }
 
-    .github-user-card .muted-link {
-        color: #586069;
+    .github-user-card .muted-link:not(:hover) {
+        color: #586069 !important;
     }
 
     .github-user-card .dashboard-break-word {
