@@ -1,4 +1,4 @@
-# GitHub Components
+# github-components
 
 ### github-pinned-repos
 
@@ -8,7 +8,7 @@
 | :-- | :-- | :-- |
 | data-repos | none | ```data-repos="user/repo_1, user/repo_2"``` |
 | data-column-count | ```"1"``` | ```data-column-count="2"``` |
-| data-column-count-media | none | ```data-column-count-media="2: 768px, 3: 992px"``` |
+| data-column-count-min-width | none | ```data-column-count-min-width="2: 768px, 3: 992px"``` |
 
 #### Example
 

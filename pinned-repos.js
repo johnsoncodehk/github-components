@@ -7,7 +7,7 @@ const repos_style = `
 {media}
 </style>`
 const style_media = `
-@media (min-width: {width}) {
+@media (min-width: {min_width}) {
     .github-pinned-repos-col-{div_id} {
         width: calc(100%/{column_count});
     }
@@ -76,7 +76,7 @@ for (const div of divs) {
     const id = i++;
     const dataRepos = div.getAttribute("data-repos");
     const dataColumnCount = div.getAttribute("data-column-count");
-    const dataMedias = div.getAttribute("data-column-count-media");
+    const dataMedias = div.getAttribute("data-column-count-min-width");
 
     const repos = dataRepos
         .split(",").map(name => name.trim())
@@ -88,7 +88,7 @@ for (const div of divs) {
         const values = media.split(":").map(val => val.trim());
         return style_media
             .replace(new RegExp("{column_count}", "g"), values[0])
-            .replace(new RegExp("{width}", "g"), values[1])
+            .replace(new RegExp("{min_width}", "g"), values[1])
     }).join("");
 
     const style = repos_style
