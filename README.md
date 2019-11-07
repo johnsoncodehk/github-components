@@ -10,7 +10,7 @@
 | data-column-count | ```"1"``` | ```data-column-count="2"``` |
 | data-column-count-min-width | none | ```data-column-count-min-width="2: 768px, 3: 992px"``` |
 
-#### Example
+#### Examples
 
 <div class="github-pinned-repos" data-column-count="2" data-repos="johnsoncodehk/github-components">
     <a href="https://johnsoncodehk.github.io/github-components/">Load</a>
@@ -18,6 +18,15 @@
 
 ```html
 <div class="github-pinned-repos" data-column-count="2" data-repos="johnsoncodehk/github-components"></div>
+<script src="https://johnsoncodehk.github.io/github-components/pinned-repos.js"></script>
+```
+
+<div class="github-pinned-repos" data-column-count="3" data-repos="johnsoncodehk/github-components,johnsoncodehk/github-components,johnsoncodehk/github-components,johnsoncodehk/github-components,johnsoncodehk/github-components">
+    <a href="https://johnsoncodehk.github.io/github-components/">Load</a>
+</div>
+
+```html
+<div class="github-pinned-repos" data-column-count="3" data-repos="johnsoncodehk/github-components,johnsoncodehk/github-components,johnsoncodehk/github-components,johnsoncodehk/github-components,johnsoncodehk/github-components"></div>
 <script src="https://johnsoncodehk.github.io/github-components/pinned-repos.js"></script>
 ```
 
@@ -29,7 +38,7 @@
 | :-- | :-- | :-- |
 | data-user | none | ```data-user="user_name"``` |
 
-#### Example
+#### Examples
 
 <div class="github-user-card" style="width: 50%;" data-user="johnsoncodehk">
     <a href="https://johnsoncodehk.github.io/github-components/">Load</a>
