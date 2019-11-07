@@ -1,5 +1,19 @@
 (() => {
     const global_style = `
+.github-user-card {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.github-user-card * {
+    box-sizing: border-box;
+}
+
+.github-user-card p {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
 .github-user-card .p-3 {
     padding: 16px !important;
 }
@@ -175,5 +189,5 @@
 
     const globalStyle = document.createElement("style");
     globalStyle.innerHTML = global_style;
-    document.body.appendChild(globalStyle);
+    document.head.appendChild(globalStyle);
 })()

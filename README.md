@@ -51,7 +51,22 @@
 
 ### repo-card
 
-(todo)
+#### Attributes
+
+| Name | Default | Reference |
+| :-- | :-- | :-- |
+| data-repo | none | ```data-repo="user_name/repo_name"``` |
+
+#### Examples
+
+<div class="github-repo-card" style="width: 50%;" data-repo="johnsoncodehk/github-components">
+    <a href="https://johnsoncodehk.github.io/github-components/">Load</a>
+</div>
+
+```html
+<div class="github-repo-card" style="width: 50%;" data-repo="johnsoncodehk/github-components"></div>
+<script src="https://johnsoncodehk.github.io/github-components/repo-card.js"></script>
+```
 
 ### issue-card
 
@@ -63,3 +78,4 @@
 
 <script src="https://johnsoncodehk.github.io/github-components/pinned-repos.js"></script>
 <script src="https://johnsoncodehk.github.io/github-components/user-card.js"></script>
+<script src="https://johnsoncodehk.github.io/github-components/repo-card.js"></script>
