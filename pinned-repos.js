@@ -162,6 +162,10 @@
     font-size: 12px!important;
 }
 
+.github-pinned-repos .mt-0 {
+    margin-top: 0px!important;
+}
+
 .github-pinned-repos .mt-2 {
     margin-top: 8px!important;
 }`
@@ -189,7 +193,7 @@
     {repos_html}
 </ol>`;
     const repos_html = `
-<li class="col-{div_id} mb-3 d-flex flex-content-stretch">
+<li class="col-{div_id} mb-3 mt-0 d-flex flex-content-stretch">
     <div
         class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source  sortable-button-item">
         <div class="pinned-item-list-item-content">
