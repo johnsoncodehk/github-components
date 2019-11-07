@@ -1,6 +1,6 @@
 # github-components
 
-### github-pinned-repos
+### pinned-repos
 
 #### Attributes
 
@@ -13,11 +13,44 @@
 #### Example
 
 <div class="github-pinned-repos" data-column-count="2" data-repos="johnsoncodehk/github-components">
-    <a href="https://johnsoncodehk.github.io/github-components/">Load Example</a>
+    <a href="https://johnsoncodehk.github.io/github-components/">Load</a>
 </div>
 
 ```html
 <div class="github-pinned-repos" data-column-count="2" data-repos="johnsoncodehk/github-components"></div>
 <script src="https://johnsoncodehk.github.io/github-components/pinned-repos.js"></script>
 ```
+
+### user-card
+
+#### Attributes
+
+| Name | Default | Reference |
+| :-- | :-- | :-- |
+| data-user | none | ```data-user="user_name"``` |
+
+#### Example
+
+<div class="github-user-card" style="width: 50%;" data-user="johnsoncodehk">
+    <a href="https://johnsoncodehk.github.io/github-components/">Load</a>
+</div>
+
+```html
+<div class="github-user-card" style="width: 50%;" data-user="johnsoncodehk"></div>
+<script src="https://johnsoncodehk.github.io/github-components/user-card.js"></script>
+```
+
+### repo-card
+
+(todo)
+
+### issue-card
+
+(todo)
+
+### pull-card
+
+(todo)
+
 <script src="https://johnsoncodehk.github.io/github-components/pinned-repos.js"></script>
+<script src="https://johnsoncodehk.github.io/github-components/user-card.js"></script>
